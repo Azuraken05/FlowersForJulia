@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flower For You</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #fff0f5;
+      font-family: Georgia, serif;
+    }
+
+    svg {
+      width: 500px;
+      height: 620px;
+    }
+
+    .flower-group {
+      transform-origin: 340px 300px;
+      animation: sway 4s ease-in-out infinite;
+    }
+
+    @keyframes sway {
+      0%, 100% { transform: rotate(-3deg); }
+      50%       { transform: rotate(3deg); }
+    }
+
+    .petal { transform-origin: 340px 300px; }
+    .petal:nth-child(1) { transform: rotate(0deg); }
+    .petal:nth-child(2) { transform: rotate(45deg); }
+    .petal:nth-child(3) { transform: rotate(90deg); }
+    .petal:nth-child(4) { transform: rotate(135deg); }
+    .petal:nth-child(5) { transform: rotate(180deg); }
+    .petal:nth-child(6) { transform: rotate(225deg); }
+    .petal:nth-child(7) { transform: rotate(270deg); }
+    .petal:nth-child(8) { transform: rotate(315deg); }
+
+    .center-pulse {
+      transform-origin: 340px 300px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.08); }
+    }
+
+    .message-text {
+      font-family: Georgia, serif;
+      font-size: 15px;
+      fill: #9b4f72;
+      text-anchor: middle;
+    }
+
+    .leaf { fill: #4CAF50; }
+    .stem { stroke: #3a7d3a; stroke-width: 5; fill: none; stroke-linecap: round; }
+  </style>
+</head>
+<body>
+
+  <svg viewBox="0 0 680 620" xmlns="http://www.w3.org/2000/svg">
+
+    <defs>
+      <radialGradient id="centerGrad" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"   stop-color="#FFD700"/>
+        <stop offset="100%" stop-color="#FFA500"/>
+      </radialGradient>
+      <radialGradient id="petalGrad" cx="50%" cy="30%" r="60%">
+        <stop offset="0%"   stop-color="#FF85B3"/>
+        <stop offset="100%" stop-color="#E8005A"/>
+      </radialGradient>
+      <filter id="softglow">
+        <feGaussianBlur stdDeviation="4" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+
+    <g class="flower-group">
+
+      <!-- Stem -->
+      <path class="stem" d="M340 520 Q330 450 340 380"/>
+
+      <!-- Leaves -->
+      <g transform="translate(340,455)">
+        <path class="leaf" d="M0 0 Q-50 -30 -60 -60 Q-20 -40 0 0"/>
+        <path class="leaf" d="M0 0 Q50 -30 60 -60 Q20 -40 0 0" opacity="0.85"/>
+      </g>
+
+      <!-- Petals -->
+      <g class="petal"><ellipse cx="340" cy="230" rx="22" ry="52" fill="url(#petalGrad)" opacity="0.92"/></g>
+      <g class="petal"><ellipse cx="340" cy="230" rx="22" ry="52" fill="url(#petalGrad)" opacity="0.88"/></g>
+      <g class="petal"><ellipse cx="340" cy="230" rx="22" ry="52" fill="url(#petalGrad)" opacity="0.90"/></g>
+      <g class="petal"><ellipse cx="340" cy="230" rx="22" ry="52" fill="url(#petalGrad)" opacity="0.86"/></g>
+      <g class="petal"><ellipse cx="340" cy="230" rx="22" ry="52" fill="url(#petalGrad)" opacity="0.92"/></g>
+      <g class="petal"><ellipse cx="340" cy="230" rx="22" ry="52" fill="url(#petalGrad)" opacity="0.88"/></g>
+      <g class="petal"><ellipse cx="340" cy="230" rx="22" ry="52" fill="url(#petalGrad)" opacity="0.90"/></g>
+      <g class="petal"><ellipse cx="340" cy="230" rx="22" ry="52" fill="url(#petalGrad)" opacity="0.86"/></g>
+
+      <!-- Center -->
+      <g class="center-pulse" filter="url(#softglow)">
+        <circle cx="340" cy="300" r="40" fill="url(#centerGrad)"/>
+        <circle cx="340" cy="300" r="28" fill="#FFE033"/>
+        <circle cx="332" cy="293" r="4"   fill="#cc8800" opacity="0.6"/>
+        <circle cx="344" cy="290" r="3.5" fill="#cc8800" opacity="0.6"/>
+        <circle cx="352" cy="298" r="3"   fill="#cc8800" opacity="0.6"/>
+        <circle cx="348" cy="308" r="4"   fill="#cc8800" opacity="0.6"/>
+        <circle cx="336" cy="311" r="3.5" fill="#cc8800" opacity="0.6"/>
+        <circle cx="328" cy="305" r="3"   fill="#cc8800" opacity="0.6"/>
+      </g>
+
+    </g>
+
+    <!-- Message -->
+    <text x="340" y="556" class="message-text" font-size="14" font-style="italic">🌸 Flowers for you JULIAAAA, and have a great day today —</text>
+    <text x="340" y="580" class="message-text" font-size="14" font-style="italic">hopefully this cheers you up! 🌸</text>
+
+  </svg>
+
+</body>
+</html>
